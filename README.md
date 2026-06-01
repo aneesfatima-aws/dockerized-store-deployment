@@ -1,6 +1,8 @@
 # dockerized-store-deployment
 ---
 
+<img width="1545" height="1018" alt="lab2" src="https://github.com/user-attachments/assets/7ea7747b-8b53-49d0-a778-66a457c375ef" />
+
 ## Phase 1 — Launch EC2
 
 ### Step 1

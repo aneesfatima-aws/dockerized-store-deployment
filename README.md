@@ -3,31 +3,42 @@
 
 ## Phase 1 — Launch EC2
 
-###Step 1
+### Step 1
 
 Go to:
 AWS Console
+
 → EC2
+
 → Launch Instance
 
 Name
+
 jewelry-store-server
 ---
 AMI
+
 Choose:
+
 Ubuntu Server 24.04 LTS
+
 ---
 Instance Type
+
 t2.micro
+
 (Free Tier)
 
 ---
 
 Key Pair
+
 Create:
 jewelry-key
+
 Download:
 jewelry-key.pem
+
 Keep it safe.
 
 ---
@@ -36,9 +47,11 @@ Security Group
 Allow:
 
 SSH     22
+
 HTTP    80
 
 Source:
+
 0.0.0.0/0
 
 ---
@@ -50,12 +63,14 @@ Running
 
 ---
 
-###Step 2
+### Step 2
 
 Copy:
+
 Public IPv4 Address
 
 Example:
+
 54.12.34.56
 
 ---
@@ -63,7 +78,9 @@ Example:
 ## Phase 2 — Connect to EC2
 
 Windows PowerShell
+
 Navigate to folder containing:
+
 jewelry-key.pem
 
 Run:
@@ -75,6 +92,7 @@ Example:
 ---
 
 Expected:
+
 ubuntu@ip-xxx-xxx:~$
 
 Success 🎉
@@ -83,7 +101,7 @@ Success 🎉
 
 ## Phase 3 — Install Docker
 
-###Step 3
+### Step 3
 Update packages
 `sudo apt update`
 
@@ -107,12 +125,13 @@ Start Docker
 
 Verify
 `docker --version`
+
 Example:
 `Docker version 28.x.x`
 
 ---
 
-###Step 4
+### Step 4
 
 Test Docker
 `sudo docker run hello-world`
@@ -124,9 +143,10 @@ Expected:
 
 ## Phase 4 — Create Project
 
-###Step 5
+### Step 5
 
 Create folder
+
 `mkdir jewelry-store`
 `cd jewelry-store`
 
@@ -171,10 +191,11 @@ Save:
 ---
 ## Phase 5 — Dockerize App
 
-###Step 6
+### Step 6
 
 Create Dockerfile
 `nano Dockerfile`
+
 Paste:
 ```
 FROM nginx:latest
@@ -185,15 +206,18 @@ Save:
 As we save earlier with keys.
 ---
 
-###Step 7
+### Step 7
 
 Build image
+
 `sudo docker build -t jewelry-store .`
+
 Don't forget to put that dot (.) in this command
 
 ---
 
 Verify
+
 `sudo docker images`
 
 You should see:
@@ -201,29 +225,34 @@ jewelry-store
 
 ---
 
-###Step 8
+### Step 8
 
 Run container
+
 `sudo docker run -d -p 80:80 jewelry-store`
 
 ---
 
 Verify
+
 `sudo docker ps`
 
 ---
 
 ## Phase 6 — Test Website
 
-###Step 9
+### Step 9
 
 Open browser
+
 `http://YOUR_PUBLIC_IP`
 
 Example:
+
 `http://54.12.34.56`
 
 Expected:
+
 `Luxe Jewelry Store
 Lab 2 Docker Deployment
 Hosted on AWS EC2 using Docker`
@@ -234,9 +263,11 @@ Hosted on AWS EC2 using Docker`
 ### Bonus Step (Highly Recommended)
 
 Stop container
+
 `sudo docker stop CONTAINER_ID`
 
 Run with name
+
 `sudo docker run -d \
 --name jewelry-container \
 -p 80:80 \
@@ -245,15 +276,23 @@ jewelry-store`
 Now it looks more professional.
 ---
 
-###Skills Learned:
--AWS EC2
--Linux Administration
--Docker
--Containerization
--SSH
--Security Groups
--Web Hosting
--Nginx
+### Skills Learned:
+
+- AWS EC2
+
+- Linux Administration
+
+- Docker
+
+- Containerization
+
+- SSH
+
+- Security Groups
+
+- Web Hosting
+
+- Nginx
 
 
 ---
